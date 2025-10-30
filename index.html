@@ -195,28 +195,24 @@ nav { position: sticky; top: 0; z-index: 9999; }
       <filter id="soft"><feGaussianBlur stdDeviation="0.7"/></filter>
     </defs>
 
-    <!-- optional soft corner glows -->
-    <g filter="url(#soft)" opacity=".18">
-      <circle cx="15" cy="12" r="9" fill="#0ea5e9"/>
-      <circle cx="92" cy="94" r="12" fill="#7c3aed"/>
-    </g>
+ 
 
     <!-- floating bubbles (no background rect, no box) -->
     <g filter="url(#soft)" opacity=".75">
-      <circle cx="14" cy="110" r="1.1" fill="#fff" opacity=".16">
-        <animate attributeName="cy" dur="10s" values="110;-10" repeatCount="indefinite"/>
-        <animate attributeName="cx" dur="6s"  values="12;16;13;15;14" repeatCount="indefinite"/>
+      <circle cx="10" cy="80" r="1" fill="#fff" opacity=".20">
+        <animate attributeName="cy" dur="15s" values="110;-10" repeatCount="indefinite"/>
+        <animate attributeName="cx" dur="8s"  values="12;16;13;15;14" repeatCount="indefinite"/>
       </circle>
-      <circle cx="32" cy="110" r="1.4" fill="#fff" opacity=".18">
+      <circle cx="32" cy="90" r="1.4" fill="#fff" opacity=".18">
         <animate attributeName="cy" dur="8.5s" begin="1s" values="110;-10" repeatCount="indefinite"/>
       </circle>
-      <circle cx="56" cy="110" r="1.2" fill="#fff" opacity=".16">
+      <circle cx="15" cy="110" r="1.2" fill="#fff" opacity=".16">
         <animate attributeName="cy" dur="9s" begin=".6s" values="110;-10" repeatCount="indefinite"/>
       </circle>
       <circle cx="74" cy="110" r="1.6" fill="#fff" opacity=".18">
         <animate attributeName="cy" dur="7.8s" begin="1.4s" values="110;-10" repeatCount="indefinite"/>
       </circle>
-      <circle cx="90" cy="110" r="1.0" fill="#fff" opacity=".14">
+      <circle cx="90" cy="80" r="1.0" fill="#fff" opacity=".14">
         <animate attributeName="cy" dur="10.5s" begin="2s" values="110;-10" repeatCount="indefinite"/>
       </circle>
 

@@ -234,6 +234,11 @@ nav { position: sticky; top: 0; z-index: 9999; }
   .net-canvas{ display:none; }
 }
 
+/* Ultra-simple mobile fix — hide menu when closed */
+@media (max-width: 900px){
+  .nav-links{ display: none !important; }          /* বন্ধ থাকলে একেবারে লুকানো */
+  #site-nav.open .nav-links{ display: flex !important; }  /* খুললে দেখাও */
+}
 
 
 

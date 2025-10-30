@@ -185,44 +185,21 @@ nav { position: sticky; top: 0; z-index: 9999; }
 
 
 
-<!-- bubbles over the hero background (no box) -->
-<div aria-hidden="true"
-     style="position:absolute; inset:0; z-index:0; pointer-events:none;">
-  <svg preserveAspectRatio="none"
-       style="width:100%; height:100%; display:block;"
-       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-    <defs>
-      <filter id="soft"><feGaussianBlur stdDeviation="0.7"/></filter>
-    </defs>
-
- 
-
-    <!-- floating bubbles (no background rect, no box) -->
-    <g filter="url(#soft)" opacity=".75">
-      <circle cx="10" cy="80" r="1" fill="#fff" opacity=".20">
-        <animate attributeName="cy" dur="15s" values="110;-10" repeatCount="indefinite"/>
-        <animate attributeName="cx" dur="8s"  values="12;16;13;15;14" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="32" cy="90" r="1.4" fill="#fff" opacity=".18">
-        <animate attributeName="cy" dur="8.5s" begin="1s" values="110;-10" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="15" cy="110" r="1.2" fill="#fff" opacity=".16">
-        <animate attributeName="cy" dur="9s" begin=".6s" values="110;-10" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="74" cy="110" r="1.6" fill="#fff" opacity=".18">
-        <animate attributeName="cy" dur="7.8s" begin="1.4s" values="110;-10" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="90" cy="80" r="1.0" fill="#fff" opacity=".14">
-        <animate attributeName="cy" dur="10.5s" begin="2s" values="110;-10" repeatCount="indefinite"/>
-      </circle>
-
-      <!-- tiny specs -->
-      <circle cx="68" cy="40" r="0.6" fill="#fff" opacity=".10"/>
-      <circle cx="28" cy="78" r="0.7" fill="#fff" opacity=".10"/>
-    </g>
-  </svg>
-</div>
-
+  <div class="bubble-layer tr ash" aria-hidden="true">
+    <!-- x = বক্সের ভেতরে বাম-থেকে শতাংশ, size(px), d = duration, delay = শুরুতে অফসেট, drift = ডান-বামের হালকা সরে যাওয়া -->
+    <span class="bubble" style="--x:6%;  --size:8px;  --d:40s; --delay:-6s;  --drift:-14px;"></span>
+    <span class="bubble" style="--x:12%; --size:11px; --d:44s; --delay:-2s;  --drift:10px;"></span>
+    <span class="bubble" style="--x:18%; --size:7px;  --d:36s; --delay:-12s; --drift:-9px;"></span>
+    <span class="bubble" style="--x:24%; --size:9px;  --d:42s; --delay:-4s;  --drift:12px;"></span>
+    <span class="bubble" style="--x:30%; --size:6px;  --d:32s; --delay:-10s; --drift:-6px;"></span>
+    <span class="bubble" style="--x:36%; --size:10px; --d:46s; --delay:-8s;  --drift:11px;"></span>
+    <span class="bubble" style="--x:42%; --size:7px;  --d:34s; --delay:-14s; --drift:-7px;"></span>
+    <span class="bubble" style="--x:48%; --size:12px; --d:48s; --delay:-1s;  --drift:14px;"></span>
+    <span class="bubble" style="--x:54%; --size:8px;  --d:38s; --delay:-5s;  --drift:-10px;"></span>
+    <span class="bubble" style="--x:60%; --size:9px;  --d:41s; --delay:-9s;  --drift:8px;"></span>
+    <span class="bubble" style="--x:66%; --size:6px;  --d:30s; --delay:-11s; --drift:-5px;"></span>
+    <span class="bubble" style="--x:72%; --size:11px; --d:47s; --delay:-7s;  --drift:12px;"></span>
+  </div>
 
 
       

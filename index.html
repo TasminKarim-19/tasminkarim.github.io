@@ -1,1 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tasmin Karim — Research Portfolio</title>
+  <meta name="description" content="Tasmin Karim — Ph.D. student portfolio · software security · ML/DL · LLMs for code · program analysis" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%230ea5e9'/%3E%3Cstop stop-color='%237158ff' offset='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='12' fill='url(%23g)'/%3E%3Ctext x='32' y='40' font-family='Inter,Arial' font-weight='700' font-size='28' text-anchor='middle' fill='white'%3ETK%3C/text%3E%3C/svg%3E"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0d12;          /* background */
+      --panel:#0f131a;       /* cards/nav */
+      --muted:#9aa3b2;       /* secondary text */
+      --text:#e6ebf2;        /* primary text */
+      --line:#1c2330;        /* hairlines */
+      --accent:#0ea5e9;      /* sky-500 */
+      --accent-2:#7c3aed;    /* violet-600 */
+      --ok:#22c55e;          /* green-500 */
+      --warn:#f59e0b;        /* amber-500 */
+      --danger:#ef4444;      /* red-500 */
+      --radius:18px;
+      --shadow: 0 8px 24px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.2);
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text); background:radial-gradient(1200px 800px at 80% -10%, rgba(14,165,233,.15), transparent 60%),
+                          radial-gradient(1000px 700px at 0% 110%, rgba(124,58,237,.12), transparent 60%),
+                          var(--bg);
+    }
+    a{color:var(--text); text-decoration:none}
+    .container{width:100%; max-width:var(--max); margin:0 auto; padding:0 22px}
+    /* Nav */
+    nav{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
+      background:linear-gradient(180deg, rgba(11,13,18,.85), rgba(11,13,18,.65));
+      border-bottom:1px solid var(--line);
+    }
+    .nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px}
+    .brand-logo{width:34px; height:34px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow:var(--shadow)}
+    .brand-logo span{font-weight:800}
+    .nav-links{display:flex; gap:18px; align-items:center}
+    .nav-links a{opacity:.9}
+    .btn{display:inline-flex; align-items:center; gap:10px; border:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      padding:10px 14px; border-radius:12px; transition:.2s transform, .2s box-shadow, .2s border-color}
+    .btn:hover{transform:translateY(-1px); border-color:#243247; box-shadow:0 6px 14px rgba(14,165,233,.18)}
+    .btn.primary{border-color:transparent; background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#fff; font-weight:700}
+
+    /* Hero */
+    .hero{padding:64px 0 36px}
+    .hero-grid{display:grid; grid-template-columns: 1.15fr .85fr; gap:28px}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; background:rgba(14,165,233,.12); color:#bfe7fb; border:1px solid #1d3347; border-radius:999px; font-size:12.5px}
+    h1{font-size:46px; line-height:1.07; margin:12px 0 8px; letter-spacing:.2px}
+    .subtitle{font-size:18px; color:var(--muted)}
+    .chip-row{display:flex; flex-wrap:wrap; gap:10px; margin:22px 0}
+    .chip{padding:7px 12px; border:1px solid var(--line); border-radius:999px; font-size:13px; color:#c7cfdb; background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01))}
+    .cta{display:flex; gap:12px; margin-top:10px}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .avatar{aspect-ratio:1/1; border-radius:22px; border:1px solid #223049; background:radial-gradient(120px 120px at 25% 20%, rgba(14,165,233,.25), transparent 60%),
+            radial-gradient(160px 120px at 100% 100%, rgba(124,58,237,.18), transparent 60%), #0e1219; display:grid; place-items:center}
+    .avatar svg{width:58%; height:58%}
+    .socials{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .icon-btn{display:inline-flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid var(--line); border-radius:12px}
+
+    section{padding:34px 0}
+    .section-title{display:flex; align-items:center; gap:12px; margin-bottom:18px}
+    .section-title .bar{width:34px; height:4px; border-radius:6px; background:linear-gradient(90deg, var(--accent), var(--accent-2))}
+
+    /* Grids */
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+
+    /* Content cards */
+    .mini{font-size:13.5px; color:#aab3c2}
+    .muted{color:var(--muted)}
+    .proj{padding:18px}
+    .proj h3{margin:6px 0 6px}
+    .proj .meta{display:flex; gap:10px; flex-wrap:wrap}
+    .tag{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border:1px solid #223049; border-radius:999px; font-size:12px; color:#bcd6ff}
+
+    /* Timeline */
+    .timeline{position:relative; padding-left:24px}
+    .timeline::before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:#1f2a3b}
+    .tl{position:relative; margin:16px 0; padding-left:12px}
+    .tl::before{content:""; position:absolute; left:-4px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(14,165,233,.25)}
+
+    /* Contact */
+    .contact-card{display:grid; grid-template-columns:1fr 1fr; gap:18px; padding:18px}
+    .list{display:grid; gap:8px}
+
+    /* Footer */
+    footer{padding:28px 0 60px; border-top:1px solid var(--line); color:#9fb0c8}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr;}
+      .grid-2{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .contact-card{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      h1{font-size:36px}
+      .grid-3{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- ================= NAV ================= -->
+  <nav>
+    <div class="container nav-wrap">
+      <div class="brand">
+        <div class="brand-logo"><span>TK</span></div>
+        <div> Tasmin Karim</div>
+      </div>
+      <div class="nav-links mini">
+        <a href="#about">About</a>
+        <a href="#interests">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#contact" class="btn">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge">Open to research collaborations</span>
+        <h1>Ph.D. Student · Software Security & <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent">LLMs for Code</span></h1>
+        <p class="subtitle">I study vulnerability detection with program analysis (AST/CFG/PDG), neuro‑symbolic reasoning, and code‑oriented foundation models.</p>
+
+        <div class="chip-row">
+          <span class="chip">Vulnerability Detection</span>
+          <span class="chip">Program Analysis (Joern)</span>
+          <span class="chip">Graph ML</span>
+          <span class="chip">CodeBERT · CodeT5 · CodeLlama</span>
+          <span class="chip">Neuro‑symbolic</span>
+        </div>
+
+        <div class="cta">
+          <a class="btn primary" href="#contact">Contact Me</a>
+          <a class="btn" href="#projects">View Projects</a>
+        </div>
+      </div>
+
+      <div class="card avatar">
+        <!-- SVG avatar with initials -->
+        <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar">
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0ea5e9"/>
+              <stop offset="1" stop-color="#7c3aed"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="160" height="160" rx="26" fill="url(#grad)"/>
+          <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle"
+            font-family="Inter, Arial" font-weight="800" font-size="64" fill="white">TK</text>
+          <text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle"
+            font-family="JetBrains Mono, monospace" font-size="14" fill="rgba(255,255,255,.85)">Tasmin Karim</text>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ============== ABOUT ============== -->
+    <section id="about">
+      <div class="section-title"><span class="bar"></span><h2>About</h2></div>
+      <div class="card" style="padding:18px">
+        <p class="muted" style="margin:0">I am a Ph.D. student in Computer Science & Engineering at Oakland University (Michigan, USA). My research focuses on <strong>software security</strong> with emphasis on <strong>LLMs for code</strong>, vulnerability datasets, and graph‑based context (AST/CFG/PDG). I enjoy building practical pipelines that connect <em>program analysis</em> tools with <em>deep learning</em> to improve detection and explanation of vulnerabilities.</p>
+      </div>
+    </section>
+
+    <!-- ============== RESEARCH INTERESTS ============== -->
+    <section id="interests">
+      <div class="section-title"><span class="bar"></span><h2>Research Interests</h2></div>
+      <div class="grid-3">
+        <div class="card proj">
+          <h3>LLMs for Code</h3>
+          <p class="muted">CodeBERT, GraphCodeBERT, CodeT5, CodeLlama; prompt engineering; contrastive learning; attention‑based line highlighting.</p>
+          <div class="meta"><span class="tag">Representation</span><span class="tag">Interpretability</span></div>
+        </div>
+        <div class="card proj">
+          <h3>Program Analysis</h3>
+          <p class="muted">AST/CFG/PDG extraction (Joern, Tree‑sitter), data‑flow/taint reasoning, and graph‑context encoding for detectors.</p>
+          <div class="meta"><span class="tag">CPG</span><span class="tag">Taint/Sink</span></div>
+        </div>
+        <div class="card proj">
+          <h3>Neuro‑symbolic Security</h3>
+          <p class="muted">Combining logical rules (FOL/Prolog) with neural models for robust vulnerability detection and explanations.</p>
+          <div class="meta"><span class="tag">FOL</span><span class="tag">Reasoners</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== PROJECTS / PUBLICATIONS ============== -->
+    <section id="projects">
+      <div class="section-title"><span class="bar"></span><h2>Projects & Publications</h2></div>
+      <div class="grid-2">
+        <article class="card proj">
+          <div class="mini" style="opacity:.85">Dataset · In progress</div>
+          <h3>NASA_VUL: Function‑Level C/C++ Vulnerability Corpus</h3>
+          <p class="muted">Mining NASA repos, mapping security commits, extracting vulnerable & patched functions; AST/CFG/PDG enrichment for ML and logical reasoning.</p>
+          <div class="meta">
+            <span class="tag">C/C++</span><span class="tag">AST/CFG/PDG</span><span class="tag">Labeling & CWE</span>
+          </div>
+        </article>
+        <article class="card proj">
+          <div class="mini" style="opacity:.85">Pipeline · Experimental</div>
+          <h3>VulLLM‑TF: CoT + Contrastive Learning for Vulnerability Detection</h3>
+          <p class="muted">TensorFlow pipeline integrating CodeT5 attention for line highlighting, CoT‑style rationales, and contrastive training for robust predictions.</p>
+          <div class="meta">
+            <span class="tag">TensorFlow</span><span class="tag">CodeT5</span><span class="tag">Contrastive</span>
+          </div>
+        </article>
+        <article class="card proj">
+          <div class="mini" style="opacity:.85">Analysis · Concept</div>
+          <h3>Graph‑Aware Transformers with Joern CPG</h3>
+          <p class="muted">Injecting graph context into transformer attention via edge‑aware masks and neuro‑symbolic prompts for code reasoning.</p>
+          <div class="meta">
+            <span class="tag">Joern</span><span class="tag">Graph ML</span><span class="tag">Attention</span>
+          </div>
+        </article>
+        <article class="card proj">
+          <div class="mini" style="opacity:.85">Teaching</div>
+          <h3>Course Support & Mentoring</h3>
+          <p class="muted">Assisting SECS courses, grading, and mentoring students on secure coding, program analysis, and ML for code.</p>
+          <div class="meta">
+            <span class="tag">TA</span><span class="tag">Mentorship</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============== TEACHING & TIMELINE ============== -->
+    <section id="teaching">
+      <div class="section-title"><span class="bar"></span><h2>Experience</h2></div>
+      <div class="grid-2">
+        <div class="card proj">
+          <h3>Recent Timeline</h3>
+          <div class="timeline">
+            <div class="tl"><strong>2025</strong> — Building vulnerability datasets; experimenting with CodeT5 line‑level highlights.</div>
+            <div class="tl"><strong>2024</strong> — Program analysis with Joern (CPG, AST/CFG/PDG); integrating with ML pipelines.</div>
+            <div class="tl"><strong>Earlier</strong> — Projects across ML/DL, software engineering, and security.</div>
+          </div>
+        </div>
+        <div class="card proj">
+          <h3>Skills</h3>
+          <p class="muted">Python, PyTorch/TensorFlow, Joern, Tree‑sitter, Semgrep, CodeQL, GitHub mining, pandas, scikit‑learn, matplotlib/plotly.</p>
+          <div class="meta"><span class="tag">Security</span><span class="tag">LLMs</span><span class="tag">Graphs</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== CONTACT ============== -->
+    <section id="contact">
+      <div class="section-title"><span class="bar"></span><h2>Contact</h2></div>
+      <div class="card contact-card">
+        <div class="list">
+          <div><strong>Email:</strong> <a href="mailto:tasmin.karim@example.com">tasmin.karim@example.com</a></div>
+          <div><strong>Location:</strong> Auburn Hills, MI, USA</div>
+          <div><strong>Profiles:</strong></div>
+          <div class="socials">
+            <a class="icon-btn" href="#" aria-label="GitHub">🐙 GitHub</a>
+            <a class="icon-btn" href="#" aria-label="Google Scholar">📚 Scholar</a>
+            <a class="icon-btn" href="#" aria-label="LinkedIn">🔗 LinkedIn</a>
+            <a class="icon-btn" href="#" aria-label="CV">📄 CV</a>
+          </div>
+        </div>
+        <div class="list">
+          <p class="muted">Want to collaborate or discuss research? I’m happy to connect about vulnerability datasets, graph‑aware models, and LLM‑based analysis for secure code.</p>
+          <div class="cta">
+            <a class="btn primary" href="mailto:tasmin.karim@example.com">Email Me</a>
+            <a class="btn" href="#">Download CV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container mini">© <span id="y"></span> Tasmin Karim · Built with ♥ for research & community.</div>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if(id.length>1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'}); }
+      })
+    })
+  </script>
+</body>
+</html>
 

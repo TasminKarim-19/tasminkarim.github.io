@@ -592,17 +592,27 @@ nav { position: sticky; top: 0; z-index: 9999; }
     <div class="container mini">© <span id="y"></span> Tasmin Karim · Built with ♥ for research & community.</div>
   </footer>
 
-  <script>
-    // year
-    document.getElementById('y').textContent = new Date().getFullYear();
-    // smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href');
-        if(id.length>1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'}); }
-      })
-    })
-  </script>
+<script>
+  // year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // smooth scroll with navbar offset
+  const NAV = document.querySelector('nav');
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id && id.length > 1) {
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        const offset = (NAV?.offsetHeight || 0) + 8; // small gap
+        const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
 

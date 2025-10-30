@@ -112,6 +112,16 @@
       h1{font-size:36px}
       .grid-3{grid-template-columns:1fr}
     }
+
+
+/* keep nav always on top */
+nav { position: sticky; top: 0; z-index: 9999; }
+
+/* anchor scroll offset so headings aren't hidden under the nav */
+:where(section, header.hero) { scroll-margin-top: 76px; } /* ~nav height */
+
+
+    
   </style>
 </head>
 <body>
@@ -132,7 +142,7 @@
         <a href="#publications"class="btn">Publications</a>
        <a href="#experience"class="btn">Experience</a>
          <a href="#education"class="btn">Education</a>
-        <a href="#services"class="btn">Services</a>
+        <a href="#service"class="btn">Services</a>
         <a href="#awards"class="btn">Awards</a>
         <a href="#contact"class="btn">Contact</a>
 
@@ -141,7 +151,7 @@
   </nav>
 
   <!-- ================= HERO ================= -->
-  <header class="hero">
+  <header class="hero" id="home">
     <div class="container hero-grid">
       <div>
         <span class="badge">Open to research collaborations</span>
@@ -492,7 +502,7 @@
 
 
 
-<!-- EDUCATION / EXPERIENCE (Timeline) -->
+<!-- EDUCATION  -->
     <section id="education">
       <div class="section-title"><span class="bar"></span><h2>Education</h2></div>
       <div class="card contact-card">
@@ -504,13 +514,13 @@
         </div>
         <div class="list">
          <div class="t-item"><strong>B.Sc., Computer Science & Engineering</strong> <br>  Daffodil International University (Jan 2020- Feb 2024)
-        <br> CGPA: <b>3.75</b>b>/4.00</div></div>
+        <br> CGPA: <b>3.98</b>/4.00</div></div>
       
     </section>
 
 <!-- service -->
     <section id="service">
-      <div class="section-title"><span class="bar"></span><h2>Service</h2></div>
+      <div class="section-title"><span class="bar"></span><h2>Services</h2></div>
       <div class="grid-2">
         <div class="card proj">
           <h3>Reviewer</h3>
@@ -556,7 +566,7 @@
       <div class="section-title"><span class="bar"></span><h2>Contact</h2></div>
       <div class="card contact-card">
         <div class="list">
-          <div><strong>Email:</strong> <a href="mailto:tasmin.karim@oakland.edu">tasmin.karim[AT]oakland[DOT]edu</a></div>
+          <div><strong>Email:</strong> <a href="mailto:tasminkarim@oakland.edu">tasmin.karim[AT]oakland[DOT]edu</a></div>
           <div><strong>Location:</strong> Auburn Hills, MI, USA</div>
           <div><strong>Profiles:</strong></div>
           <div class="socials">
@@ -569,7 +579,7 @@
         <div class="list">
           <p class="muted">Want to collaborate or discuss research? I’m happy to connect about vulnerability datasets, graph‑aware models, and LLM‑based analysis for secure code.</p>
           <div class="cta">
-            <a class="btn primary" href="tasmin.karim@oakland.edu">Email Me</a>
+            <a class="btn primary" href="tasminkarim@oakland.edu">Email Me</a>
             <a class="btn" href="#">Download CV</a>
           </div>
         </div>

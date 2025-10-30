@@ -169,34 +169,81 @@ nav { position: sticky; top: 0; z-index: 9999; }
   .bubble{ animation:none; opacity:.12 }
 }
 
+
+
+    /* Mobile menu toggle (hidden on desktop) */
+.menu-toggle{
+  display:none; /* desktop */
+  align-items:center; justify-content:center;
+  width:44px; height:40px; border-radius:10px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+  cursor:pointer;
+}
+.menu-toggle .bar{
+  display:block; width:22px; height:2px; margin:3px 0;
+  background:#cbd5e1; transition:.25s transform,.25s opacity;
+}
+
+/* Mobile layout for nav links */
+@media (max-width: 900px){
+  .menu-toggle{ display:inline-flex; }
+  .nav-wrap{ gap:10px; }
+  .nav-links{
+    position:fixed; left:0; right:0;
+    top:calc(var(--navH,72px));
+    background:linear-gradient(180deg, rgba(11,13,18,.98), rgba(11,13,18,.92));
+    border-bottom:1px solid var(--line);
+    display:flex; flex-direction:column; gap:10px;
+    padding:12px 16px 18px;
+    max-height:0; overflow:hidden; transition:max-height .3s ease;
+  }
+  /* open state */
+  #site-nav.open .nav-links{ max-height:80vh; }
+
+  /* make links full-width on mobile */
+  .nav-links a{ width:100%; text-align:left; }
+}
+
+/* X animation */
+#site-nav.open .menu-toggle .bar:n
+
+
   </style>
 </head>
 <body>
   <!-- ================= NAV ================= -->
-  <nav id="site-nav">
-
-    <div class="container nav-wrap">
-      <div class="brand">
-        <div class="brand-logo"><span>TK</span></div>
-        <div> </div>
-      </div>
-      <div class="nav-links mini">
-
-        <a href="#home"class="btn">Home</a>
-        <a href="#about"class="btn">About</a>
-        <a href="#research"class="btn">Research</a>
-  
-       
-        <a href="#publications"class="btn">Publications</a>
-       <a href="#experience"class="btn">Experience</a>
-         <a href="#education"class="btn">Education</a>
-        <a href="#service"class="btn">Services</a>
-        <a href="#awards"class="btn">Awards</a>
-        <a href="#contact"class="btn">Contact</a>
-
-      </div>
+ <nav id="site-nav">
+  <div class="container nav-wrap">
+    <div class="brand">
+      <div class="brand-logo"><span>TK</span></div>
+      <div></div>
     </div>
-  </nav>
+
+    <!-- NEW: mobile menu button -->
+    <button class="menu-toggle" id="menu-toggle"
+            aria-label="Toggle navigation" aria-expanded="false"
+            aria-controls="primary-nav">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- add id="primary-nav" -->
+    <div class="nav-links mini" id="primary-nav">
+      <a href="#home" class="btn">Home</a>
+      <a href="#about" class="btn">About</a>
+      <a href="#research" class="btn">Research</a>
+      <a href="#publications" class="btn">Publications</a>
+      <a href="#experience" class="btn">Experience</a>
+      <a href="#education" class="btn">Education</a>
+      <a href="#service" class="btn">Services</a>
+      <a href="#awards" class="btn">Awards</a>
+      <a href="#contact" class="btn">Contact</a>
+    </div>
+  </div>
+</nav>
+
 
   <!-- ================= HERO ================= -->
   <section id="home">
@@ -679,6 +726,30 @@ nav { position: sticky; top: 0; z-index: 9999; }
       }
     });
   });
+
+
+// Mobile menu toggle
+const NAVBAR = document.getElementById('site-nav');
+const TOGGLE = document.getElementById('menu-toggle');
+const LINKS  = document.getElementById('primary-nav');
+
+if (TOGGLE && NAVBAR && LINKS){
+  TOGGLE.addEventListener('click', ()=>{
+    const open = NAVBAR.classList.toggle('open');
+    TOGGLE.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('no-scroll', open);
+  });
+  // কোনো লিংকে চাপলেই মেনু বন্ধ
+  LINKS.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      NAVBAR.classList.remove('open');
+      TOGGLE.setAttribute('aria-expanded','false');
+      document.body.classList.remove('no-scroll');
+    });
+  });
+}
+
+  
 </script>
 
 

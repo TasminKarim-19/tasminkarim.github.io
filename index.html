@@ -185,74 +185,48 @@ nav { position: sticky; top: 0; z-index: 9999; }
 
 
 
-<div class="card avatar">
-  <!-- Subtle gradient + floating bubbles (no text) -->
-  <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decorative avatar">
+<div class="card avatar" style="position:relative; overflow:hidden;">
+  <!-- Subtle floating bubbles over the avatar background (no box) -->
+  <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg"
+       aria-hidden="true" focusable="false" preserveAspectRatio="none"
+       style="position:absolute; inset:0; width:100%; height:100%; display:block; pointer-events:none;">
     <defs>
-      <!-- background gradient -->
-      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#0ea5e9"/>
-        <stop offset="1" stop-color="#7c3aed"/>
-      </linearGradient>
-      <!-- soft vignette -->
-      <radialGradient id="vignette" cx="70%" cy="25%" r="80%">
-        <stop offset="0" stop-color="rgba(0,0,0,0)"/>
-        <stop offset="1" stop-color="rgba(0,0,0,.25)"/>
-      </radialGradient>
-      <!-- clip to rounded rectangle so bubbles don't overflow -->
-      <clipPath id="round">
-        <rect x="0" y="0" width="160" height="160" rx="26"/>
-      </clipPath>
-      <!-- slight blur for bubbles -->
-      <filter id="blur2"><feGaussianBlur stdDeviation="1.6"/></filter>
+      <filter id="soft"><feGaussianBlur stdDeviation="1.6"/></filter>
     </defs>
 
-    <!-- background -->
-    <rect x="0" y="0" width="160" height="160" rx="26" fill="url(#bg)"/>
-    <rect x="0" y="0" width="160" height="160" rx="26" fill="url(#vignette)" opacity=".28"/>
+    <!-- optional soft glow -->
+    <circle cx="28" cy="22" r="18" fill="#0ea5e9" opacity=".18" filter="url(#soft)"/>
+    <circle cx="140" cy="150" r="22" fill="#7c3aed" opacity=".15" filter="url(#soft)"/>
 
-    <!-- floating bubbles -->
-    <g clip-path="url(#round)" filter="url(#blur2)" opacity=".75">
-      <!-- bubble 1 -->
-      <circle cx="36" cy="170" r="3.5" fill="#ffffff" opacity=".18">
-        <animate attributeName="cy" dur="7s" values="170; -10" repeatCount="indefinite" />
-        <animate attributeName="r" dur="7s" values="3.5;5;3.2" repeatCount="indefinite" />
-        <animate attributeName="opacity" dur="7s" values="0;.25;.18;0" repeatCount="indefinite" />
+    <!-- floating bubbles (no background rect) -->
+    <g filter="url(#soft)">
+      <circle cx="26"  cy="170" r="3.2" fill="#fff" opacity=".16">
+        <animate attributeName="cy" dur="8s" values="170;-10" repeatCount="indefinite"/>
+        <animate attributeName="opacity" dur="8s" values="0;.22;.16;0" repeatCount="indefinite"/>
       </circle>
-      <!-- bubble 2 -->
-      <circle cx="78" cy="170" r="4.2" fill="#ffffff" opacity=".16">
-        <animate attributeName="cy" dur="8.5s" begin="1.2s" values="170; -10" repeatCount="indefinite" />
-        <animate attributeName="r" dur="8.5s" begin="1.2s" values="4.2;6;3.8" repeatCount="indefinite" />
-        <animate attributeName="opacity" dur="8.5s" begin="1.2s" values="0;.22;.16;0" repeatCount="indefinite" />
+      <circle cx="72"  cy="170" r="4.0" fill="#fff" opacity=".18">
+        <animate attributeName="cy" dur="9s" begin="1s" values="170;-10" repeatCount="indefinite"/>
+        <animate attributeName="opacity" dur="9s" begin="1s" values="0;.24;.18;0" repeatCount="indefinite"/>
       </circle>
-      <!-- bubble 3 -->
-      <circle cx="118" cy="170" r="3.2" fill="#ffffff" opacity=".17">
-        <animate attributeName="cy" dur="6.8s" begin="0.6s" values="170; -10" repeatCount="indefinite" />
-        <animate attributeName="r" dur="6.8s" begin="0.6s" values="3.2;4.8;3" repeatCount="indefinite" />
-        <animate attributeName="opacity" dur="6.8s" begin="0.6s" values="0;.24;.17;0" repeatCount="indefinite" />
+      <circle cx="114" cy="170" r="3.0" fill="#fff" opacity=".16">
+        <animate attributeName="cy" dur="7.5s" begin=".6s" values="170;-10" repeatCount="indefinite"/>
+        <animate attributeName="opacity" dur="7.5s" begin=".6s" values="0;.22;.16;0" repeatCount="indefinite"/>
       </circle>
-      <!-- bubble 4 -->
-      <circle cx="140" cy="170" r="2.8" fill="#ffffff" opacity=".16">
-        <animate attributeName="cy" dur="9s" begin="2s" values="170; -10" repeatCount="indefinite" />
-        <animate attributeName="r" dur="9s" begin="2s" values="2.8;4;2.6" repeatCount="indefinite" />
-        <animate attributeName="opacity" dur="9s" begin="2s" values="0;.22;.16;0" repeatCount="indefinite" />
+      <circle cx="142" cy="170" r="2.6" fill="#fff" opacity=".14">
+        <animate attributeName="cy" dur="10s" begin="2s" values="170;-10" repeatCount="indefinite"/>
+        <animate attributeName="opacity" dur="10s" begin="2s" values="0;.2;.14;0" repeatCount="indefinite"/>
       </circle>
-      <!-- bubble 5 -->
-      <circle cx="12" cy="170" r="2.6" fill="#ffffff" opacity=".15">
-        <animate attributeName="cy" dur="8s" begin="1.6s" values="170; -10" repeatCount="indefinite" />
-        <animate attributeName="r" dur="8s" begin="1.6s" values="2.6;3.8;2.4" repeatCount="indefinite" />
-        <animate attributeName="opacity" dur="8s" begin="1.6s" values="0;.2;.15;0" repeatCount="indefinite" />
+      <circle cx="10"  cy="170" r="2.4" fill="#fff" opacity=".14">
+        <animate attributeName="cy" dur="8.8s" begin="1.4s" values="170;-10" repeatCount="indefinite"/>
+        <animate attributeName="opacity" dur="8.8s" begin="1.4s" values="0;.2;.14;0" repeatCount="indefinite"/>
       </circle>
-      <!-- tiny background specs -->
-      <circle cx="90" cy="40" r="1.6" fill="#fff" opacity=".12"/>
-      <circle cx="120" cy="60" r="1.2" fill="#fff" opacity=".10"/>
-      <circle cx="42" cy="78" r="1.4" fill="#fff" opacity=".10"/>
+      <!-- tiny specs -->
+      <circle cx="96" cy="46" r="1.4" fill="#fff" opacity=".10"/>
+      <circle cx="46" cy="92" r="1.2" fill="#fff" opacity=".10"/>
     </g>
-
-    <!-- subtle inner border -->
-    <rect x="0.5" y="0.5" width="159" height="159" rx="25.5" fill="none" stroke="rgba(255,255,255,.08)"/>
   </svg>
 </div>
+
 
       
       

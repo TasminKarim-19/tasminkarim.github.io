@@ -130,7 +130,45 @@ nav { position: sticky; top: 0; z-index: 9999; }
 :where(section, header.hero) { scroll-margin-top: 76px; } /* ~nav height */
 
 
-    
+    /* শুধুই টপ-রাইট এলাকায় বাবল দেখাতে */
+.bubble-layer.tr{
+  position:absolute;
+  /* ফাঁকা জায়গা: এখানে gap সেট হচ্ছে */
+  top: clamp(12px, 6vw, 48px);
+  right: clamp(12px, 6vw, 48px);
+  /* এই রেক্ট্যাঙ্গলের ভেতরেই বাবল ভাসবে */
+  width: clamp(260px, 34vw, 540px);
+  height: clamp(180px, 30vh, 360px);
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ash/gray বাবল রঙ */
+.bubble-layer.ash .bubble{
+  background: radial-gradient(circle at 30% 30%,
+    rgba(200,210,220,.38), rgba(200,210,220,.14) 42%, rgba(200,210,220,0) 72%);
+  filter: drop-shadow(0 0 6px rgba(200,210,220,.05));
+}
+
+/* base bubble (থাকলে ডুপ্লিকেট করবেন না) */
+.bubble{
+  position:absolute;
+  left:var(--x); bottom:-12%;
+  width:var(--size); height:var(--size); border-radius:50%;
+  animation: floatUp var(--d) linear infinite; animation-delay: var(--delay);
+  opacity: 0; will-change: transform, opacity;
+}
+@keyframes floatUp{
+  0%   { transform: translateY(0) translateX(0); opacity:0; }
+  12%  { opacity:.22; }
+  65%  { transform: translateY(-75%) translateX(var(--drift, 0px)); opacity:.20; }
+  100% { transform: translateY(-115%) translateX(var(--drift, 0px)); opacity:0; }
+}
+@media (prefers-reduced-motion: reduce){
+  .bubble{ animation:none; opacity:.12 }
+}
+
   </style>
 </head>
 <body>
@@ -162,7 +200,7 @@ nav { position: sticky; top: 0; z-index: 9999; }
 
   <!-- ================= HERO ================= -->
   <section id="home">
-    <header class="hero">
+    <header class="hero" id="home" style="position:relative; overflow:hidden;">
     <div class="container hero-grid">
       <div>
         <span class="badge">Open to research collaborations</span>

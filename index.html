@@ -29,20 +29,29 @@
       --max:1100px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text); background:radial-gradient(1200px 800px at 80% -10%, rgba(14,165,233,.15), transparent 60%),
-                          radial-gradient(1000px 700px at 0% 110%, rgba(124,58,237,.12), transparent 60%),
-                          var(--bg);
-    }
+body{
+  margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text); background:radial-gradient(1200px 800px at 80% -10%, rgba(14,165,233,.15), transparent 60%),
+                      radial-gradient(1000px 700px at 0% 110%, rgba(124,58,237,.12), transparent 60%),
+                      var(--bg);
+  padding-top: var(--navH);
+}
+
     a{color:var(--text); text-decoration:none}
     .container{width:100%; max-width:var(--max); margin:0 auto; padding:0 22px}
     /* Nav */
-    nav{
-      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
-      background:linear-gradient(180deg, rgba(11,13,18,.85), rgba(11,13,18,.65));
-      border-bottom:1px solid var(--line);
+
+    
+   /* FIXED NAVBAR */
+#site-nav{
+  position: fixed !important;
+  top: 0; left: 0; right: 0;
+  z-index: 2147483647;
+  width: 100%;
+  backdrop-filter: saturate(140%) blur(8px);
+  background: linear-gradient(180deg, rgba(11,13,18,.85), rgba(11,13,18,.65));
+  border-bottom: 1px solid var(--line);
+
     }
     .nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px}
@@ -126,7 +135,8 @@ nav { position: sticky; top: 0; z-index: 9999; }
 </head>
 <body>
   <!-- ================= NAV ================= -->
-  <nav>
+  <nav id="site-nav">
+
     <div class="container nav-wrap">
       <div class="brand">
         <div class="brand-logo"><span>TK</span></div>
@@ -151,7 +161,9 @@ nav { position: sticky; top: 0; z-index: 9999; }
   </nav>
 
   <!-- ================= HERO ================= -->
-  <header class="hero" id="home">
+  
+    <header class="hero" id="home">
+
     <div class="container hero-grid">
       <div>
         <span class="badge">Open to research collaborations</span>
@@ -580,7 +592,7 @@ nav { position: sticky; top: 0; z-index: 9999; }
           <p class="muted">Want to collaborate or discuss research? I’m happy to connect about vulnerability datasets, graph‑aware models, and LLM‑based analysis for secure code.</p>
           <div class="cta">
             <a class="btn primary" href="tasminkarim@oakland.edu">Email Me</a>
-            <a class="btn" href="#">Download CV</a>
+            <a class="btn" href="https://drive.google.com/file/d/1dXUIhe-SDujjPPbOzj5tZ-4l5vn8H3CG/view?usp=drive_link">Download CV</a>
           </div>
         </div>
       </div>
@@ -596,22 +608,32 @@ nav { position: sticky; top: 0; z-index: 9999; }
   // year
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // smooth scroll with navbar offset
-  const NAV = document.querySelector('nav');
+  // nav height অনুযায়ী body padding অটো-সেট
+  const NAV = document.getElementById('site-nav');
+  function setBodyPad(){
+    const h = NAV ? NAV.offsetHeight : 0;
+    document.documentElement.style.setProperty('--navH', h + 'px');
+    document.body.style.paddingTop = h + 'px';
+  }
+  window.addEventListener('load', setBodyPad);
+  window.addEventListener('resize', setBodyPad);
+
+  // fixed navbar offset সহ smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href');
       if (id && id.length > 1) {
-        const target = document.querySelector(id);
-        if (!target) return;
+        const t = document.querySelector(id);
+        if (!t) return;
         e.preventDefault();
-        const offset = (NAV?.offsetHeight || 0) + 8; // small gap
-        const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        const offset = (NAV?.offsetHeight || 0) + 8;
+        const y = t.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
     });
   });
 </script>
+
 
 </body>
 </html>
